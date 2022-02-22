@@ -1,6 +1,6 @@
 
 /*
-.........................................Muss das denn immer sein?................................................................................
+.........................................Muss das denn immer sein?...............................................................................
 
 */
 
@@ -8,7 +8,7 @@
 Zeigt alle Wagen an, bei denen die Materialnummer (Zelle C4) fehlt und gibt diese in der Zelle aus, in der die Formel steht.
 Textjoin verbindet dabei die einzelnen Werte innerhalb einer Zelle.
 Ohne Textjoin werden die einzelnen Werte jeweils in einer neuen Spalte ausgegeben.
-Ohne TRANSPOSE werden die Werte Zeilenweise ausgegeben.
+Ohne TRANSPOSE werden die Werte Zeilenweise ausgegeben..
 */
 
 
@@ -38,10 +38,10 @@ Textfilter über zwei Spalten, in einer Zelle, der Treffer muss nur in einer erf
 =FILTER(UNIQUE(tbArbeitsliste);
 (
 ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr]))
-)+
+)+g
 (
 ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
-  )
+  )ggg
 )
 
 

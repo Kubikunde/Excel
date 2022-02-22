@@ -38,10 +38,10 @@ Textfilter über zwei Spalten, in einer Zelle, der Treffer muss nur in einer erf
 =FILTER(UNIQUE(tbArbeitsliste);
 (
 ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr]))
-)+g
+)+
 (
 ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
-  )ggg
+  )
 )
 
 

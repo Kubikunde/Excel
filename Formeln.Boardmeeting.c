@@ -11,7 +11,6 @@ Ohne Textjoin werden die einzelnen Werte jeweils in einer neuen Spalte ausgegebe
 Ohne TRANSPOSE werden die Werte Zeilenweise ausgegeben..
 */
 
-
 =TEXTJOIN("; ";TRUE;
   TRANSPOSE(
     UNIQUE(

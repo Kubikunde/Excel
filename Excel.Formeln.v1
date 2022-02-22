@@ -1,0 +1,53 @@
+/*
+- vRange = der Bereich der gefiltert werden soll
+- vSuchspalte = die Spalte, in der gesucht werden soll (die Spalte wird relativ zur Range angegeben): vRange = die Tabelle und vSuchspalte = die Spalte dieser ausgegebenen Tabelle. Egal wieviele Spalten die Datenquelle hat.
+- vSuchtext = die Zelle, in die der zu suchende Text eingetragen wird
+*/
+
+SEARCHTEXTINRANGE =Lambda(
+  vRange;
+  vSuchtext;
+  vSuchspalte;
+  FILTER(vRange;
+    ISNUMBER(
+      SEARCH(vSuchtext;
+        INDEX(vRange;;vSuchspalte)))=TRUE
+      )
+)
+
+=LET(
+u;SORT(FILTER(
+UNIQUE(tbArbeitsliste[[Lieferantenname]:[Materialkurztext]]);ISNUMBER(SEARCH(" x";INDEX(UNIQUE(tbArbeitsliste[[Lieferantenname]:[Materialkurztext]]);;2)))=FALSE);{1});
+
+v;COUNTIF(tbArbeitsliste[Komponente];INDEX(u;;2));
+
+
+CHOOSE(TRANSPOSE({1;1;1;2});u;v))
+
+
+/*
+    FUNCTION NAME: APPENDROWS
+    DESCRIPTION: Appends two arrays row-wise
+    ARGS:
+        array1: The array to append rows from array2 to
+        array2: The array to append to array1
+
+    EXAMPLE:
+        =APPENDROWS(SEQUENCE(10), SEQUENCE(10, 1, 11))
+*/
+
+/*
+APPENDROWS =LAMBDA(array1, array2,
+    LET(
+        array1Rows, ROWS(array1),
+        colIndex, SEQUENCE(, MAX(COLUMNS(array1), COLUMNS(array2))),
+        rowIndex1, SEQUENCE(array1Rows + ROWS(array2)),
+        rowIndex2, rowIndex1 - array1Rows,
+        IF(
+            rowIndex2 >= 1,
+            INDEX(array2, rowIndex2, colIndex),
+            INDEX(array1, rowIndex1, colIndex)
+        )
+    )
+);
+*/

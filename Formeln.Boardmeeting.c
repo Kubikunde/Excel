@@ -58,11 +58,25 @@ ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr])))+
 ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
   )
 )
+/*
+Gibt Zeile 2,4 & 6 aus Spalte 9,7 & 6 wider.
+ACHTUNG: Bei Zeilen muss es ein Semikolon sein und bei Spalten ein Backslash
+Die Ausgabe erfolgt in der angegebenen Reihenfolge
+*/
 
+=INDEX(AusgangstabelleODERBereich;
 
-=INDEX(tbArbeitsliste;SEQUENCE(ROWS(tbArbeitsliste));{9\7\6})
+{2;4;6};{9\7\6})
 
-XMATCH(B3:C3;F3:G3)
+/*
+Gibt 5 Zeilen und 4 Spalten der AusgangstabelleODERBereich wider.
+ACHTUNG das Semikolon in der zweiten SEQUENCE sagt Excel, dass es sich bei der Angabe um Spalten handelt.
+*/
+
+=INDEX(AusgangstabelleODERBereich;
+
+SEQUENCE(5);SEQUENCE(;4))
+
 
 /*
 Gibt in einem dynamischen Array die Spalten aus, von denen der Tabellenkopf zur Tabellenkopf des Arrays passt

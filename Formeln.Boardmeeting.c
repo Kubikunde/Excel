@@ -58,3 +58,25 @@ ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr])))+
 ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
   )
 )
+
+
+=INDEX(tbArbeitsliste;SEQUENCE(ROWS(tbArbeitsliste));{9\7\6})
+
+XMATCH(B3:C3;F3:G3)
+
+/*
+Gibt in einem dynamischen Array die Spalten aus, von denen der Tabellenkopf zur Tabellenkopf des Arrays passt
+Tabelle hat z.B. 20 Spalten, im dynamischen array will ich aber nur 3, 8 und 15 haben und dann auch noch durch einander.
+XMATCH(B3:D3 = die neuen Überschriften ( 15, 3, 8)
+tbArbeitsliste[#Headers] = der Tabellenkop der Ausgangstabelle.
+tbArbeitsliste = name der Ausgangstabelle
+*/
+
+
+
+=INDEX(tbArbeitsliste;
+
+SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
+
+
+)

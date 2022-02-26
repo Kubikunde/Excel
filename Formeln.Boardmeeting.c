@@ -94,3 +94,40 @@ SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
 
 
 )
+  
+  
+  
+  
+/* Gibt eine Matrix von 7 Spalten und (Enddatum-Startdatum) aus.
+    C1 = Startdatum
+    C2 = Enddatum
+*/
+
+=(C1+SEQUENCE(((C2-C1)/7)+1;7))
+
+
+
+/* Gibt die Wochennummer der Zellerechts neben der Zelle mit der Formel wider
+    Adress gibt die aktuelle position im Blatt aus z.B. $D$8  diese Ausgabe muss man über INDIRECT wieder in einen Zellbezug bzw. auf den Inhalt der Zelle umwandeln.
+    ;1 bei Adress und TRUE bei INDIRECT stehen für einen absoluten Zellbezug ( Alles geht von Zelle $A$1 aus)
+*/
+
+=WEEKNUM(
+	INDIRECT(ADDRESS(ROW();COLUMN()+1;1);TRUE);2
+)
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

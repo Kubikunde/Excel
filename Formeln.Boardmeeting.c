@@ -119,8 +119,40 @@ SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
   
   
   
-  
-  
+/*
+Gibt in einem dynamischen Array die Spalten aus, von denen der Tabellenkopf zur Tabellenkopf des Arrays passt
+Tabelle hat z.B. 20 Spalten, im dynamischen array will ich aber nur 3, 8 und 15 haben und dann auch noch durch einander.
+XMATCH(B3:D3 = die neuen Überschriften ( 15, 3, 8)
+tbArbeitsliste[#Headers] = der Tabellenkop der Ausgangstabelle.
+tbArbeitsliste = name der Ausgangstabelle
+*/
+
+
+
+=INDEX(tbArbeitsliste;
+
+SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
+
+
+)
+
+/*
+Gibt eine Art Kalender zurück
+C1 = Startdatum
+C2 = Enddatum
+Das Array hat 8 Spalten
+in der ersten Spalte steht die Kalenderwoche
+in den anderen 7 Spalten steht das Enddatum
+*/
+
+
+=CHOOSE({1\2\2\2\2\2\2\2};
+
+WEEKNUM((C1+SEQUENCE(((C2-C1)/7)+1;;0;7)-1);2);
+
+INDEX(C1-1+SEQUENCE(((C2-C1)/7)+1;7);SEQUENCE((C2-C1)/7+1);SEQUENCE(;8;0))
+
+)  
   
   
   

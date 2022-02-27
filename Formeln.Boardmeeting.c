@@ -148,11 +148,12 @@ in den anderen 7 Spalten steht das Enddatum
 
 =CHOOSE({1\2\2\2\2\2\2\2};
 
-WEEKNUM((C1+SEQUENCE(((C2-C1)/7)+1;;0;7)-1);2);
+WEEKNUM((C1+SEQUENCE(((C2-C1)/7)+1;;;7)-1);21);
 
 INDEX(C1-1+SEQUENCE(((C2-C1)/7)+1;7);SEQUENCE((C2-C1)/7+1);SEQUENCE(;8;0))
 
-)  
+)
+
   
   
   

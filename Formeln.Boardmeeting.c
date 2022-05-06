@@ -154,6 +154,21 @@ INDEX(C1-1+SEQUENCE(((C2-C1)/7)+1;7);SEQUENCE((C2-C1)/7+1);SEQUENCE(;8;0))
 
 )
 
+/* 
+gibt die einzigartigen Werte einer Tabelle wider und filtert dabei in der zweiten Spüalte die werte aus, die " x" enthalten. 
+(Die Werte, die " x" enthalten werden also NICHT angezeigt.)
+ - UNIQUE(tbArbeitsliste[[Lieferantenname]:[Materialkurztext]]); => welcher Bereich soll gefiltert werden 
+ - ISNUMBER(SEARCH(" x";INDEX(UNIQUE(tbArbeitsliste[[Lieferantenname]:[Materialkurztext]]);;2))  => Sucht in der zweiten Spalte nach Werten, die den Wert " x" enthalten
+ - NOT( => dreht die Suche um, da wir ja Werte suchen, die nicht " x" enthalten und eine Suche nach ungleich " x" führt nicht zum erfolg, da die FILTER-Funktion bis jetzt keine Wildcard erlaubt
+ - ;;2))  => in welcher Spalte des Bereichs soll gesucht werden
+Komplette Formel siehe unten.
+*/
+	
+=FILTER(
+	
+	UNIQUE(tbTabellenname[[SpalteVon]:[SpalteBis]]);
+	NOT(ISNUMBER(SEARCH(" x";INDEX(UNIQUE(tbTabellenname[[SpalteVon]:[SpalteBis]]);;2)) 
+		    ));"")
   
   
   

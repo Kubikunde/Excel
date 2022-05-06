@@ -35,12 +35,10 @@ Textfilter über zwei Spalten, in einer Zelle, der Treffer muss nur in einer erf
 */
 
 =FILTER(UNIQUE(tbArbeitsliste);
-(
-ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr]))
-)+
-(
-ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
-  )
+	(ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr]))
+	)+
+	(ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
+	)
 )
 
 
@@ -50,12 +48,10 @@ Textfilter über zwei Spalten, in einer Zelle, der Treffer muss nur in einer erf
 */
 
 =FILTER(
-FILTER(tbArbeitsliste;ISNUMBER(XMATCH(tbArbeitsliste[#Headers];Sheet1!C3:J3)));
+	FILTER(tbArbeitsliste;ISNUMBER(XMATCH(tbArbeitsliste[#Headers];Sheet1!C3:J3)));
 
-(
-ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr])))+
-(
-ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
+		(ISNUMBER(SEARCH(E1;tbArbeitsliste[Seriennr])))+
+		(ISNUMBER(SEARCH(E1;tbArbeitsliste[Lieferantenname]))
   )
 )
 /*
@@ -75,7 +71,8 @@ ACHTUNG das Semikolon in der zweiten SEQUENCE sagt Excel, dass es sich bei der A
 
 =INDEX(AusgangstabelleODERBereich;
 
-SEQUENCE(5);SEQUENCE(;4))
+	SEQUENCE(5);SEQUENCE(;4)
+      )
 
 
 /*
@@ -90,9 +87,7 @@ tbArbeitsliste = name der Ausgangstabelle
 
 =INDEX(tbArbeitsliste;
 
-SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
-
-
+	SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
 )
   
   
@@ -131,9 +126,7 @@ tbArbeitsliste = name der Ausgangstabelle
 
 =INDEX(tbArbeitsliste;
 
-SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
-
-
+	SEQUENCE(ROWS(tbArbeitsliste));XMATCH(B3:D3;tbArbeitsliste[#Headers])
 )
 
 /*
@@ -148,9 +141,9 @@ in den anderen 7 Spalten steht das Enddatum
 
 =CHOOSE({1\2\2\2\2\2\2\2};
 
-WEEKNUM((C1+SEQUENCE(((C2-C1)/7)+1;;0;7));21);
+	WEEKNUM((C1+SEQUENCE(((C2-C1)/7)+1;;0;7));21);
 
-INDEX(C1-1+SEQUENCE(((C2-C1)/7)+1;7);SEQUENCE((C2-C1)/7+1);SEQUENCE(;8;0))
+	INDEX(C1-1+SEQUENCE(((C2-C1)/7)+1;7);SEQUENCE((C2-C1)/7+1);SEQUENCE(;8;0))
 
 )
 
@@ -165,11 +158,14 @@ Komplette Formel siehe unten.
 */
 	
 =FILTER(
-	
 	UNIQUE(tbTabellenname[[SpalteVon]:[SpalteBis]]);
-	NOT(ISNUMBER(SEARCH(" x";INDEX(UNIQUE(tbTabellenname[[SpalteVon]:[SpalteBis]]);;2)) 
-		    ));"")
+	NOT(ISNUMBER(SEARCH(" x";INDEX(UNIQUE(tbTabellenname[[SpalteVon]:[SpalteBis]]);;2)
+			   )
+		    )
+	   );""
+	)
   
+
   
   
   

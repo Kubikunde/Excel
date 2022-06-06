@@ -164,6 +164,14 @@ Komplette Formel siehe unten.
 		    )
 	   );""
 	)
+	
+/* 
+sucht den Text in G2 in den Spalten Lieferantenname & Seriennummer, entweder oder muss getroffen werden. und sortiert alphabetisch nach Spalte 7
+*/
+
+=SORT(FILTER(tbArbeitsliste;
+	     (ISNUMBER(SEARCH(G2;tbArbeitsliste[Lieferantenname])))+(ISNUMBER(SEARCH(G2;tbArbeitsliste[Seriennr]))))
+      ;7;;FALSE)
   
 
   

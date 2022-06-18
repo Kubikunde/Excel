@@ -173,7 +173,12 @@ sucht den Text in G2 in den Spalten Lieferantenname & Seriennummer, entweder ode
 	     (ISNUMBER(SEARCH(G2;tbArbeitsliste[Lieferantenname])))+(ISNUMBER(SEARCH(G2;tbArbeitsliste[Seriennr]))))
       ;7;;FALSE)
   
+	
+/* schaut nach, ob in der Spalte "komponente" 'Leezeichen+x' vorkommt, wenn ja, dann schreibt es in die Zelle ein "x" und wenn nicht, dann trägt es einen "-" in die Zelle ein.*/
 
+=IF(ISNUMBER(SEARCH(" x";[@Komponente]))=TRUE;"x";"-")
+- /* ich brauchte das, um nicht in zwei Spalten den Status pflegen zu müssen. Damit die erledigten Materialnummern nicht als doppelte gewertet werden, habe ich sie um " x" ergänzt. 
+zusätzlich hatte ich aber eine Spalte (Aktiv/ erledigt), diese wird jetzt automatisch gefüllt. */
   
   
   

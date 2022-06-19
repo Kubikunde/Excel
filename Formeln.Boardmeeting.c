@@ -179,6 +179,18 @@ sucht den Text in G2 in den Spalten Lieferantenname & Seriennummer, entweder ode
 =IF(ISNUMBER(SEARCH(" x";[@Komponente]))=TRUE;"x";"-")
 - /* ich brauchte das, um nicht in zwei Spalten den Status pflegen zu müssen. Damit die erledigten Materialnummern nicht als doppelte gewertet werden, habe ich sie um " x" ergänzt. 
 zusätzlich hatte ich aber eine Spalte (Aktiv/ erledigt), diese wird jetzt automatisch gefüllt. */
+	
+	
+	
+=SORT(FILTER(UNIQUE(tbArbeitsliste[[Lieferantenname]:[Materialkurztext]]);NOT(ISNUMBER(SEARCH(" x";INDEX(UNIQUE(tbArbeitsliste[[Lieferantenname]:[Materialkurztext]]);;2))));""))
+
+
+=FILTER(UNIQUE(tbArbeitsliste[Komponente]);NOT(ISNUMBER(SEARCH(" x";UNIQUE(tbArbeitsliste[Komponente])))))
+
+=INDEX(tbArbeitsliste[[Seriennr]:[Materialkurztext]];SEQUENCE(ROWS(tbArbeitsliste[Komponente]));{2\3\4\1})
+
+
+=INDEX(FILTER(tbArbeitsliste[[Seriennr]:[Materialkurztext]];NOT(ISNUMBER(SEARCH(" x";tbArbeitsliste[Komponente]))));SEQUENCE(ROWS(FILTER(tbArbeitsliste[Komponente];NOT(ISNUMBER(SEARCH(" x";tbArbeitsliste[Komponente]))))));{2\3\4\1})
   
   
   
